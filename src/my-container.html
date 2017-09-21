@@ -1,0 +1,112 @@
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.7/webcomponents-lite.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="import" href="shared-styles.html">
+
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/promise-polyfill/promise-polyfill-lite.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<link rel="import" href="../bower_components/social-media-icons/social-media-icons.html">
+
+<link rel="import" href="my-icons.html">
+<link rel="import" href="my-login.html">
+<link rel="import" href="my-app.html">
+
+<dom-module id="my-container">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+
+    <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
+    <app-route
+        route="{{route}}"
+        pattern="[[rootPath]]:page"
+        data="{{routeData}}"
+        tail="{{subroute}}"></app-route>
+
+
+    <iron-pages
+            selected="[[page]]"
+            attr-for-selected="name"
+            fallback-selection="view404"
+            role="main">
+        <my-login name="login"></my-login>
+        <my-app name="app"></my-app>
+    </iron-pages>
+      
+
+  </template>
+
+  <script>
+    class MyContainer extends Polymer.Element {
+      static get is() {
+        return 'my-container';
+      }
+
+      static get properties() {
+        return {
+          page: {
+            type: String,
+            reflectToAttribute: true,
+            observer: '_pageChanged',
+          },
+          routeData: Object,
+          subroute: String,
+          // This shouldn't be neccessary, but the Analyzer isn't picking up
+          // Polymer.Element#rootPath
+          rootPath: String,
+        };
+      }
+
+      static get observers() {
+        return [
+          '_routePageChanged(routeData.page)',
+        ];
+      }
+
+      _routePageChanged(page) {
+          this.page = page || 'login'
+
+      }
+
+      _pageChanged(page) {
+        // Load page import on demand. Show 404 page if fails
+        if (page == 'login' || page == 'app') {
+          var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
+          Polymer.importHref(
+              resolvedPageUrl,
+              null,
+              this._showPage404.bind(this),
+              true);
+        }
+      }
+
+      _showPage404() {
+        this.page = 'view404';
+      }
+
+
+    }
+
+    
+    
+
+    window.customElements.define(MyContainer.is, MyContainer);
+  </script>
+</dom-module>

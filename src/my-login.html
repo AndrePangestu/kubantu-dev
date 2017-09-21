@@ -29,7 +29,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="my-icons.html">
 <link rel="import" href="button-login.html">
-<link rel="lazy-import" href="my-app.html">
 
 <dom-module id="my-login">
   <template>
@@ -86,9 +85,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </iron-form>
     </div>
 
-
-    <my-app name="my-app"></my-app>
-
   </template>
 
   <script>
@@ -96,9 +92,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       static get is() {
         return 'my-login';
       }
-    }
-    function submitForm() {
-      document.getElementById('iron-form').submit();
     }
 
     window.customElements.define(MyLogin.is, MyLogin);

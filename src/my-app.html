@@ -144,6 +144,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _routePageChanged(page) {
+        
+
+        if(page == 'app') {
+          page = 'view1';
+        }
+
+        console.log(page)
         // If no page was found in the route data, page will be an empty string.
         // Deault to 'view1' in that case.
         this.page = page || 'view1';

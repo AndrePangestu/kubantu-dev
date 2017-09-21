@@ -11,37 +11,58 @@
         padding: 10px;
       }
     </style>
-    <paper-button on-click="handleClick" class="btn-login">LOGIN</paper-button>
+
+    <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
+    <app-route
+        route="{{route}}"
+        pattern="[[rootPath]]:page"
+        data="{{routeData}}"
+        tail="{{subroute}}"></app-route>
+
+    <paper-button class="btn-login">LOGIN</paper-button>
   </template>
   <script>
-    class ButtonLogin extends Polymer.Element {
+    class ButtonLogin extends Polymer.GestureEventListeners(Polymer.Element) {
 
       static get is() {return 'button-login'}
 
       static get properties() {
         return {
-          hidden: {
-			  type: Boolean,
-			  value: true
-		  }
+          page: {
+            type: String,
+            reflectToAttribute: true,
+          },
+          routeData: Object,
+          subroute: String,
+          // This shouldn't be neccessary, but the Analyzer isn't picking up
+          // Polymer.Element#rootPath
+          rootPath: String,
         };
+      }
+
+      constructor() {
+        super();
+        this.count = 0;
+        Polymer.Gestures.addListener(this, 'tap', e => this.handleTap(e));
       }
 
       ready() {
 	    super.ready();
-	    console.log("hehe");
-	    this.show = !this.show;
 	  }
 
-      handleClick() {
-        var resolvedPageUrl = this.resolveUrl('my-app.html');
-        Polymer.importHref(
-            resolvedPageUrl,
-            null,
-            this._showPage404.bind(this),
-            true);
-
+	  handleTap(e) {
+        this.set('route.path', '/app');
       }
+
+      // handleClick() {
+      //   var resolvedPageUrl = this.resolveUrl('my-app.html');
+      //   Polymer.importHref(
+      //       resolvedPageUrl,
+      //       null,
+      //       this._showPage404.bind(this),
+      //       true);
+
+      // }
 
       _showPage404() {
         this.page = 'view404';
