@@ -32,8 +32,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
     <style>
       :host {
-        --app-primary-color: #4285f4;
+        --app-primary-color: white;
         --app-secondary-color: black;
+        --app-box-shadow: 0 6px 10px 0 rgba(0,0,0,0.2);
 
         display: block;
       }
@@ -43,8 +44,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       app-header {
-        color: #fff;
+        color: black;
         background-color: var(--app-primary-color);
+        box-shadow: var(--app-box-shadow);
+        transition: 0.3s;
       }
 
       app-header paper-icon-button {
@@ -57,7 +60,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .drawer-list a {
         display: block;
-        padding: 0 16px;
+        padding: 10px 30px;
+        margin-top: 10px;
         text-decoration: none;
         color: var(--app-secondary-color);
         line-height: 40px;
@@ -79,12 +83,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <app-drawer-layout fullbleed narrow="{{narrow}}">
       <!-- Drawer content -->
       <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
-        <app-toolbar>Menu</app-toolbar>
+        <app-toolbar>  <b>ku</b>bantu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="view1" href="[[rootPath]]view1">View One</a>
-          <a name="view2" href="[[rootPath]]view2">View Two</a>
-          <a name="view3" href="[[rootPath]]view3">View Three</a>
-          <a name="view4" href="[[rootPath]]view4">View Four</a>
+          <a name="view1" href="[[rootPath]]view1">Feed</a>
+          <a name="view2" href="[[rootPath]]view2">Expert</a>
+          <a name="view3" href="[[rootPath]]view3">History</a>
+          <a name="view4" href="[[rootPath]]view4">Profile</a>
         </iron-selector>
       </app-drawer>
 
@@ -94,7 +98,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-header slot="header" condenses reveals effects="waterfall">
           <app-toolbar>
             <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
-            <div main-title>My App</div>
+            <div main-title><b>ku</b>bantu</div>
           </app-toolbar>
         </app-header>
 
@@ -115,6 +119,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script>
     class MyApp extends Polymer.Element {
+
       static get is() { return 'my-app'; }
 
       static get properties() {
@@ -147,6 +152,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         if (!this.$.drawer.persistent) {
           this.$.drawer.close();
         }
+
       }
 
       _pageChanged(page) {
