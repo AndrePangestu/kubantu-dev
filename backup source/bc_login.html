@@ -1,0 +1,99 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.7/webcomponents-lite.min.js"></script>
+<link rel="import" href="shared-styles.html">
+
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="../bower_components/promise-polyfill/promise-polyfill-lite.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-localstorage/iron-localstorage.html">
+<link rel="import" href="../bower_components/iron-input/iron-input.html">
+
+<link rel="import" href="../bower_components/social-media-icons/social-media-icons.html">
+
+<link rel="import" href="my-icons.html">
+
+<dom-module id="my-login">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        padding: 10px;
+      }
+    </style>
+
+    <div class="card" layout horizontal noscript>
+      <!-- <div class="circle">Logo</div> -->
+      <div style="text-align:center;font-size:20px;">
+        <span style="font-size:28px;color:black"><b>ku</b>bantu</span>
+      </div>
+      <iron-form is="component-form">
+        <form action="./my-app" method="get">
+          <paper-input name="username" type="text" label="Username" value="User" required></paper-input>
+          <paper-input name="password" type="password" label="Password" value="Password" required></paper-input>
+
+          <div style="text-align:center;margin-top:5%;margin-bottom:8%;">
+          <paper-button class="btn-login" raised onclick="submitForm()">Login</paper-button>
+          </div>
+        </form>
+
+
+        <div style="text-align:center;margin-top:5%;margin-bottom:8%;">
+          <span style="text-align:center;font-size:12px;">Forgot your login details? <b>Get help signin in.</b></span>
+        </div>
+
+        <fieldset class="title" style="text-align:center;margin-top:5%;margin-bottom:5%;">
+            <legend style="color:black;">OR</legend>
+        </fieldset>
+
+
+
+        <div style="text-align:center;margin-top:5%;margin-bottom:20%;">
+        <paper-button class="btn-fb" raised onclick="submitForm()"><social-media-icons icon="facebook" color="#ffffff" size="20"></social-media-icons><span class="title-fb">Log In with Facebook</span></paper-button>
+        </div>
+
+
+
+        <hr></hr>
+        <div style="text-align:center;margin-top:5%;">
+        <span style="text-align:center;font-size:15px;">Don't have an account? <b>Sign up.</b></span>
+        </div>
+
+      </iron-form>
+
+    </div>
+  </template>
+
+  <script>
+    class MyLogin extends Polymer.Element {
+      static get is() {
+        return 'my-login';
+      }
+    }
+    function submitForm() {
+      document.getElementById('iron-form').submit();
+    }
+
+    window.customElements.define(MyLogin.is, MyLogin);
+  </script>
+</dom-module>
