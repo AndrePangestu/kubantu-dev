@@ -9,6 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.7/webcomponents-lite.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="import" href="shared-styles.html">
 
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
@@ -27,6 +28,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/social-media-icons/social-media-icons.html">
 
 <link rel="import" href="my-icons.html">
+<link rel="import" href="button-login.html">
+<link rel="lazy-import" href="my-app.html">
 
 <dom-module id="my-login">
   <template>
@@ -38,19 +41,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
-    <div class="card">
+    <div class="card" id="container-login">
       <!-- <div class="circle">Logo</div> -->
       <div style="text-align:center;font-size:20px;">
         <span style="font-size:28px;color:black"><b>ku</b>bantu</span>
       </div>
       <br>
       <iron-form id="iron-form">
-        <form action="./my-app" method="get">
+        <form>
           <paper-input name="username" type="text" label="Username" value="User" required></paper-input>
           <paper-input name="password" type="password" label="Password" value="Password" required></paper-input>
           <br>
           <div style="text-align:center;">
-          <paper-button class="btn-login" raised onclick="submitForm()">Login</paper-button>
+          <!-- <paper-button class="btn-login" raised >Login</paper-button> -->
+          <button-login name="button-login" visibility="false"></button-login>
           </div>
         </form>
 
@@ -80,8 +84,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </div>
 
       </iron-form>
-
     </div>
+
+
+    <my-app name="my-app"></my-app>
+
   </template>
 
   <script>

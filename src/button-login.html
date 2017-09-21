@@ -1,0 +1,52 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html"/>
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+
+<dom-module id="button-login">
+  <template>
+  	<style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+    <paper-button on-click="handleClick" class="btn-login">LOGIN</paper-button>
+  </template>
+  <script>
+    class ButtonLogin extends Polymer.Element {
+
+      static get is() {return 'button-login'}
+
+      static get properties() {
+        return {
+          hidden: {
+			  type: Boolean,
+			  value: true
+		  }
+        };
+      }
+
+      ready() {
+	    super.ready();
+	    console.log("hehe");
+	    this.show = !this.show;
+	  }
+
+      handleClick() {
+        var resolvedPageUrl = this.resolveUrl('my-app.html');
+        Polymer.importHref(
+            resolvedPageUrl,
+            null,
+            this._showPage404.bind(this),
+            true);
+
+      }
+
+      _showPage404() {
+        this.page = 'view404';
+      }
+    }
+    customElements.define(ButtonLogin.is, ButtonLogin);
+  </script>
+</dom-module>
