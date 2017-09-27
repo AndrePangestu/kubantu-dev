@@ -83,7 +83,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <app-drawer-layout fullbleed narrow="{{narrow}}">
       <!-- Drawer content -->
       <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
-        <app-toolbar>  <b>ku</b>bantu</app-toolbar>
+        <app-toolbar><b>ku</b>bantu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
           <a name="view1" href="[[rootPath]]view1">Feed</a>
           <a name="view2" href="[[rootPath]]view2">Expert</a>
@@ -144,10 +144,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _routePageChanged(page) {
-        
 
         if(page == 'app') {
           page = 'view1';
+        } else if (page == 'view2') {
+          page = 'view2';
+        } else {
+          page = 'view3';
         }
 
         console.log(page)
@@ -165,6 +168,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _pageChanged(page) {
         // Load page import on demand. Show 404 page if fails
         var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
+        console.log(resolvedPageUrl);
         Polymer.importHref(
             resolvedPageUrl,
             null,

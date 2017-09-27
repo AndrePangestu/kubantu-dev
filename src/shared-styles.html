@@ -14,9 +14,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="shared-styles">
   <template>
     <style>
+
+      .card-container {
+        height: 100%;
+        margin: -3%;
+        padding: 16px;
+        color: #757575;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      }
       .card {
         height: 100%;
-        margin: 5px;
+        margin: 0px;
         padding: 16px;
         color: #757575;
         border-radius: 5px;
@@ -83,13 +93,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           padding: 5px 10px;
       }
       .alert-error {
-    background: #ffcdd2;
-    border: 1px solid #f44336;
-    border-radius: 3px;
-    color: #333;
-    font-size: 14px;
-    padding: 10px;
-}
+        background: #ffcdd2;
+        border: 1px solid #f44336;
+        border-radius: 3px;
+        color: #333;
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      .title-feed{
+        margin-left: 30%;
+        margin-top: -26%;
+        margin-bottom: 22%;
+        font-weight: bold;
+        color: black;
+        font-size: 18px;
+      }
+
+      .date-feed{
+        margin-left: 30%;
+        margin-top: -23%;
+        margin-bottom: 16%;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .image-feed {
+        border-top-left-radius: 50% 50%;
+        border-top-right-radius: 50% 50%;
+        border-bottom-right-radius: 50% 50%;
+        border-bottom-left-radius: 50% 50%;
+        width: 25%;
+      }
+
 
     </style>
   </template>

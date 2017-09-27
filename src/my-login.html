@@ -40,7 +40,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
-    <div class="card" id="container-login">
+    <div class="card-container" id="login">
       <!-- <div class="circle">Logo</div> -->
       <div style="text-align:center;font-size:20px;">
         <span style="font-size:28px;color:black"><b>ku</b>bantu</span>
@@ -51,12 +51,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <paper-input name="username" type="text" label="Username" value="User" required></paper-input>
           <paper-input name="password" type="password" label="Password" value="Password" required></paper-input>
           <br>
-          <div style="text-align:center;">
           <!-- <paper-button class="btn-login" raised >Login</paper-button> -->
           <button-login name="button-login" visibility="false"></button-login>
-          </div>
-        </form>
 
+        </form>
 
         <br>
         <div>
@@ -71,9 +69,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <br>
 
-        <div style="text-align:center;">
+
         <paper-button class="btn-fb" raised onclick="submitForm()"><social-media-icons icon="facebook" color="#ffffff" size="20"></social-media-icons><span class="title-fb">Log In with Facebook</span></paper-button>
-        </div>
+
 
         <br><br>
 

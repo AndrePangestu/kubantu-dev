@@ -1,29 +1,62 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
 <link rel="import" href="shared-styles.html">
+
+<link rel="import" href="image-feed.html">
 
 <dom-module id="my-view1">
   <template>
     <style include="shared-styles">
       :host {
         display: block;
-
         padding: 10px;
       }
-
       .card-margin {
         margin-bottom: 5%;
       }
+
+      iron-image {
+      --iron-image-width: 100%;
+    }
     </style>
 
     <div class="card card-margin">
-      <div class="circle">1</div>
-      <h1>View One</h1>
+      <div>
+        <iron-image position="center" alt="Profile Mitra" class="image-feed" src="../assets/images/zayn-malik-wiki-one-direction-pics.jpg"></iron-image>
+      </div>
+      <div class="title-feed">Zayn Malik</div>
+      <div class="date-feed">Sep 24 at 9:30am</div>
+
+      <iron-image position="center" alt="Profile Mitra" src="../assets/images/one-direction-art.jpg"></iron-image>
+      <h1>One Direction Art</h1>
       <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
       <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
     </div>
+
     <div class="card card-margin">
-      <div class="circle">2</div>
-      <h1>View Two</h1>
+      <div>
+        <iron-image position="center" alt="Profile Mitra" class="image-feed" src="../assets/images/SteveJobsSquare.jpg"></iron-image>
+      </div>
+      <div class="title-feed">Steve Jobs</div>
+      <div class="date-feed">Sep 24 at 8:30am</div>
+
+      <iron-image position="center" alt="Profile Mitra" src="../assets/images/apple-iphone-x.jpg"></iron-image>
+      <h1>Iphone X</h1>
+      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
+      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+    </div>
+
+    <div class="card card-margin">
+      <div>
+        <iron-image position="center" alt="Profile Mitra" class="image-feed" src="../assets/images/bill-gates.jpg"></iron-image>
+      </div>
+      <div class="title-feed">Bill Gates</div>
+      <div class="date-feed">Sep 23 at 10:30pm</div>
+
+      <iron-image position="center" alt="Profile Mitra" src="../assets/images/Windows-10-Final-Build.jpg"></iron-image>
+      <h1>Latest Windows 10</h1>
       <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
       <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
     </div>

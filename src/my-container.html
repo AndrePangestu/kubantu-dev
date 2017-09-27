@@ -40,16 +40,15 @@
         data="{{routeData}}"
         tail="{{subroute}}"></app-route>
 
-
     <iron-pages
             selected="[[page]]"
             attr-for-selected="name"
             fallback-selection="view404"
             role="main">
         <my-login name="login"></my-login>
-        <my-app name="app"></my-app>
+        <my-app name="app" route="[[subroute]]"></my-app>
     </iron-pages>
-      
+
 
   </template>
 
@@ -82,30 +81,23 @@
 
       _routePageChanged(page) {
           this.page = page || 'login'
-
       }
 
       _pageChanged(page) {
         // Load page import on demand. Show 404 page if fails
-        if (page == 'login' || page == 'app') {
           var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
           Polymer.importHref(
               resolvedPageUrl,
               null,
               this._showPage404.bind(this),
               true);
-        }
       }
 
       _showPage404() {
         this.page = 'view404';
       }
 
-
     }
-
-    
-    
 
     window.customElements.define(MyContainer.is, MyContainer);
   </script>
