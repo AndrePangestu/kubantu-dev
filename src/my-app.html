@@ -145,14 +145,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _routePageChanged(page) {
 
-        if(page == 'app') {
-          page = 'view1';
-        } else if (page == 'view2') {
-          page = 'view2';
-        } else {
-          page = 'view3';
-        }
-
         console.log(page)
         // If no page was found in the route data, page will be an empty string.
         // Deault to 'view1' in that case.
@@ -168,7 +160,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _pageChanged(page) {
         // Load page import on demand. Show 404 page if fails
         var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
-        console.log(resolvedPageUrl);
         Polymer.importHref(
             resolvedPageUrl,
             null,
